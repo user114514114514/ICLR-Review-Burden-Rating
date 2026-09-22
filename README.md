@@ -14,9 +14,21 @@ A local, offline tool that quantifies the possible review burden of low-quality 
 
 ## Quick Start & Deployment
 
-**Prerequisites**: Python 3.10+. No extra libraries are required. The program uses the standard library only.
+**Prerequisites**: Python 3.10+, Git, and [Git LFS](https://git-lfs.com/). No extra Python libraries are required. The program uses the standard library only.
 
-### 1. Launch Web UI
+### 1. Clone
+
+`data/iclr.sqlite3` is stored with Git LFS. The real database is about 144 MB. GitHub's **Download ZIP** does not fetch LFS objects, so a zip leaves a small pointer file at that path and SQLite cannot open it. Clone instead:
+
+```bash
+git lfs install
+git clone https://github.com/user114514114514/ICLR-Review-Burden-Rating.git
+cd ICLR-Review-Burden-Rating
+```
+
+After clone, `data/iclr.sqlite3` should be about 144 MB.
+
+### 2. Launch Web UI
 
 ```bash
 python3 -m iclr_burden serve
@@ -24,7 +36,7 @@ python3 -m iclr_burden serve
 
 Open [http://127.0.0.1:8765/](http://127.0.0.1:8765/) in your browser. The local server is strictly read-only and provides author search, annual score cards, peak-score rankings, and global score distributions.
 
-### 2. Command-Line Queries
+### 3. Command-Line Queries
 
 ```bash
 # Search authors by name or OpenReview Profile ID
@@ -45,7 +57,7 @@ python3 -m iclr_burden paper --paper PAPER_ID
 
 
 
-### 3. Database Maintenance (Optional)
+### 4. Database Maintenance (Optional)
 
 A precomputed SQLite database is located at `data/iclr.sqlite3`. It stores the fields the site reads: author identities, paper scores, and each review's score and confidence. Paper text and review comments are not included. To download the pinned dump and rebuild:
 

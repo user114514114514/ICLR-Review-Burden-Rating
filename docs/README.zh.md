@@ -12,9 +12,21 @@
 
 ## 快速上手与部署指引
 
-**环境要求**：Python 3.10+。不需要任何额外库，只用标准库。
+**环境要求**：Python 3.10+、Git，以及 [Git LFS](https://git-lfs.com/)。不需要任何额外 Python 库，只用标准库。
 
-### 1. 启动 Web 界面
+### 1. 克隆到本地
+
+`data/iclr.sqlite3` 使用 Git LFS 存储，真实数据库大约 144 MB。GitHub 的 **Download ZIP** 不会下载 LFS 对象，压缩包里的这个路径只是一个很小的指针文件，SQLite 无法打开。请用克隆：
+
+```bash
+git lfs install
+git clone https://github.com/user114514114514/ICLR-Review-Burden-Rating.git
+cd ICLR-Review-Burden-Rating
+```
+
+克隆完成后，`data/iclr.sqlite3` 应约为 144 MB。
+
+### 2. 启动 Web 界面
 
 ```bash
 python3 -m iclr_burden serve
@@ -22,7 +34,7 @@ python3 -m iclr_burden serve
 
 在浏览器打开 [http://127.0.0.1:8765/](http://127.0.0.1:8765/)。本地服务为只读模式，提供作者检索、年度得分卡、峰值分排名与全库分数分布等功能。
 
-### 2. 命令行查询
+### 3. 命令行查询
 
 ```bash
 # 按学者姓名或 OpenReview Profile ID 搜索
@@ -43,7 +55,7 @@ python3 -m iclr_burden paper --paper PAPER_ID
 
 
 
-### 3. 数据库维护（可选）
+### 4. 数据库维护（可选）
 
 预计算的 SQLite 数据库位于 `data/iclr.sqlite3`。库里只保存网站查询用到的字段：作者身份、论文分数，以及每条审稿的分数和置信度，不含论文正文和审稿意见。如需下载固定快照并重建：
 
