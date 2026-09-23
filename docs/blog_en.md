@@ -52,10 +52,10 @@ $$
 
 Confidence 1 receives weight $0.7$, while confidence 5 receives $1.1$ (modulating influence by roughly $\pm 25\%$).
 
-Second, to protect against rogue or malicious scores (e.g., an unjustified 1 or 10), we compute the median rating $m_p = \operatorname{median}(r_1, \ldots, r_n)$ and clip all ratings to within $\pm 2$ points of that median:
+Second, to protect against rogue or malicious scores (e.g., an unjustified 1 or 10), we compute the median rating $m_p = \mathrm{median}(r_1, \ldots, r_n)$ and clip all ratings to within $\pm 2$ points of that median:
 
 $$
-\tilde r_i = m_p + \operatorname{clip}(r_i - m_p, -2, 2).
+\tilde r_i = m_p + \mathrm{clip}(r_i - m_p, -2, 2).
 $$
 
 The Robust Review Score $R_p$ is then the confidence-weighted mean:

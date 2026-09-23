@@ -78,7 +78,7 @@ Scoring is restricted strictly to **[ICLR](https://iclr.cc/) 2024–2026** and o
 Review ratings ($`r_i \in [1, 10]`$) and confidences ($`c_i \in [1, 5]`$) are clipped within $\pm 2$ of the paper median $`m_p`$ before calculating the weighted mean:
 
 ```math
-q_i = 0.6 + 0.1 c_i, \quad R_p = \frac{\sum_i q_i \cdot \operatorname{clip}(r_i, m_p - 2, m_p + 2)}{\sum_i q_i}
+q_i = 0.6 + 0.1 c_i, \quad R_p = \frac{\sum_i q_i \cdot \mathrm{clip}(r_i, m_p - 2, m_p + 2)}{\sum_i q_i}
 ```
 
 

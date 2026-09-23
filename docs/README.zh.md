@@ -76,7 +76,7 @@ python3 -m iclr_burden dataset-setup
 审稿评分（$`r_i \in [1, 10]`$）与置信度（$`c_i \in [1, 5]`$）在加权前被截断在该论文中位数 $`m_p`$ 的上下 2 分之内：
 
 ```math
-q_i = 0.6 + 0.1 c_i, \quad R_p = \frac{\sum_i q_i \cdot \operatorname{clip}(r_i, m_p - 2, m_p + 2)}{\sum_i q_i}
+q_i = 0.6 + 0.1 c_i, \quad R_p = \frac{\sum_i q_i \cdot \mathrm{clip}(r_i, m_p - 2, m_p + 2)}{\sum_i q_i}
 ```
 
 
